@@ -1,9 +1,11 @@
 var webpack = require('webpack');
+var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 var path = require('path');
 
 var SRC_DIR = path.resolve(__dirname, 'src');
 var APP_DIR = path.resolve(SRC_DIR, 'client', 'app');
 var BUILD_DIR = path.resolve(SRC_DIR, 'server', 'public', 'static', 'scripts');
+var HOST = process.env.IP + ':' + process.env.PORT;
 
 var config = {
     entry: APP_DIR + '/index.js',
@@ -12,14 +14,31 @@ var config = {
         filename: 'bundle.js'
     },
     module : {
+        /*
+        preLoaders: [
+            {
+                test: /\.jsx$|\.js$/, 
+                include: APP_DIR,
+                loader: "eslint-loader"
+            }
+        ],
+        */
         loaders : [
             {
-                test : /\.js?/,
-                include : APP_DIR,
-                loader : 'babel-loader'
+                test: /\.jsx$|\.js$/,
+                include: APP_DIR,
+                loader: 'babel-loader'
             }
         ]
-    }
+    },
+    plugins: [
+        /*
+        new BrowserSyncPlugin({
+            proxy: HOST,
+            open: false
+        })
+        */
+    ]
 };
 
 module.exports = config;

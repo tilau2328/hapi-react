@@ -1,4 +1,4 @@
-export { VisibleTodoList } from './VisibleTodoList';
-export { AddTodo } from './AddTodo';
-export { FilterLink } from './FilterLink';
-export { TodoContainer } from './TodoContainer';
+export { VisibleTodoList } from './VisibleTodoList.jsx';
+export { AddTodo } from './AddTodo.jsx';
+export { FilterLink } from './FilterLink.jsx';
+export { TodoContainer } from './TodoContainer.jsx';

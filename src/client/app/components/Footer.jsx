@@ -1,7 +1,7 @@
 import React from 'react';
-import { FilterLink } from '../containers';
+import FilterLink from '../containers/FilterLink.jsx';
 
-export const Footer = () => (
+const Footer = () => (
   <p>
     Show:
     {" "}
@@ -12,3 +12,5 @@ export const Footer = () => (
     <FilterLink filter="SHOW_COMPLETED"> Completed </FilterLink>
   </p>
 );
+
+export default Footer;

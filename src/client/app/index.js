@@ -5,8 +5,9 @@ import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 import reducer from './reducers';
-import { App } from './components';
-import { Index, Todos } from './pages';
+import App from './components/App.jsx';
+import Index from './pages/Index.jsx';
+import Todos from './pages/Todos.jsx';
 
 const store = createStore(reducer);
 
