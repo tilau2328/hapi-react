@@ -6,8 +6,9 @@ let AddTodo = ({ dispatch }) => {
   let input;
 
   return (
-    <div>
+    <div className="col-sm-3">
       <form
+        className="form-group"
         onSubmit={
           (e) => {
             e.preventDefault();
@@ -17,8 +18,20 @@ let AddTodo = ({ dispatch }) => {
           }
         }
       >
-        <input ref={(node) => { input = node; }} />
-        <button type="submit"> Add Todo </button>
+        <div className="input-group">
+          <input
+            className="form-control"
+            ref={(node) => { input = node; }}
+          />
+          <span className="input-group-btn">
+            <button
+              className="btn btn-primary"
+              type="submit"
+            >
+              Add Todo
+            </button>
+          </span>
+        </div>
       </form>
     </div>
   );
