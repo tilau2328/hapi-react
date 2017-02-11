@@ -1,13 +1,11 @@
 import React from 'react';
-import TodoContainer from '../containers/TodoContainer.jsx';
+import TodoContainer from '../containers/TodoContainer';
 
-const Todos = () => {
-  return (
-    <div>
-      <h1>Todos</h1>
-      <TodoContainer />
-    </div>
-  );
-};
+const Todos = () => (
+  <div>
+    <h1>Todos</h1>
+    <TodoContainer />
+  </div>
+);
 
 export default Todos;

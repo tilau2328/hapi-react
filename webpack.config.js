@@ -8,13 +8,15 @@ var BUILD_DIR = path.resolve(SRC_DIR, 'server', 'public', 'static', 'scripts');
 var HOST = process.env.IP + ':' + process.env.PORT;
 
 var config = {
-    entry: APP_DIR + '/index.js',
+    entry: APP_DIR + '/index.jsx',
+    resolve: {
+        extensions: [".jsx", ".json", ".js"]
+    },
     output: {
         path: BUILD_DIR,
         filename: 'bundle.js'
     },
     module : {
-        /*
         preLoaders: [
             {
                 test: /\.jsx$|\.js$/, 
@@ -22,7 +24,6 @@ var config = {
                 loader: "eslint-loader"
             }
         ],
-        */
         loaders : [
             {
                 test: /\.jsx$|\.js$/,

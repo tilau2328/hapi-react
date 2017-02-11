@@ -1,5 +1,7 @@
 {
   "extends": "airbnb",
   "rules": {
+    "comma-dangle": ["error", "never"],
+    "arrow-body-style": ["error", "as-needed", { "requireReturnForObjectLiteral": true }],
   }
 }

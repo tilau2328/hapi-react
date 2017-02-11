@@ -1,10 +1,13 @@
+let nextTodoId = 0;
+
 const todo = (state = {}, action) => {
   switch (action.type) {
     case 'ADD_TODO':
+      nextTodoId += 1;
       return {
-        id: action.id,
+        id: nextTodoId,
         text: action.text,
-        completed: false,
+        completed: false
       };
     case 'TOGGLE_TODO':
       if (state.id !== action.id) { return state; }
