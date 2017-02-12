@@ -19,7 +19,7 @@ var config = {
     module : {
         preLoaders: [
             {
-                test: /\.jsx$|\.js$/, 
+                test: /\.jsx$|\.js$/,
                 include: APP_DIR,
                 loader: "eslint-loader"
             }
