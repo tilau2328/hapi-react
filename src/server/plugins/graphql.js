@@ -5,10 +5,11 @@ const graphqlSchema = require('../graphql/schema');
 const createResolvers = require('../graphql/resolvers');
 
 const User = require('../models/user');
+const Todo = require('../models/todo');
 
 const executableSchema = makeExecutableSchema({
   typeDefs: [graphqlSchema],
-  resolvers: createResolvers({ User }),
+  resolvers: createResolvers({ User, Todo }),
 });
 
 module.exports = {

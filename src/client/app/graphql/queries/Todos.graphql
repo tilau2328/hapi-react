@@ -1,0 +1,7 @@
+query Todos($filter: String) {
+  getTodos(filter: $filter){
+    id
+    text
+    completed
+  }
+}

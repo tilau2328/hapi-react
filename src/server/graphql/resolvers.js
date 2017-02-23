@@ -1,19 +1,31 @@
+const todosController = require('../controllers/todos');
+
 const resolvers = (models) => ({
   Query: {
-    getUserById(root, { id }) {
-      return models.User.findById(id).then((response) => response);
-    },
-
-    getUserByEmail(root, { email }) {
-      return models.User.findOne({ email }).then((response) => response);
-    },
+    getTodos(root, { filter }) {
+      return todosController.getTodosByFilter(models.Todo, filter);
+    }
   },
   Mutation: {
-    createUser(root, args) {
-      const user = new models.User(args);
-      return user.save().then((response) => response);
+    createTodo(root, args) {
+      const todo = new models.Todo(args);
+      console.log("CREATE TODO");
+      return todo.save().then((response) => response);
     },
-  },
+    toggleTodo(root, { id }) {
+      return todosController.toggleTodo(models.Todo, id);
+    },
+    editTodo(root, { id, text }) {
+      models.Todo
+        .find({ id })
+        .then(
+          (todo) => {
+            todo.text = text;
+            todo.save().then((response) => response);
+          }
+        );
+    }
+  }
 });
 
 module.exports = resolvers;

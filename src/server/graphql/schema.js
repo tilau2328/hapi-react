@@ -1,16 +1,18 @@
 const schema = `
-  type User {
+  type Todo {
     id: ID!
-    email: String!
+    text: String!
+    completed: Boolean!
   }
 
   type Query {
-    getUserById(id: ID!): User
-    getUserByEmail(email: String!): User
+    getTodos(filter: String): [Todo]
   }
 
   type Mutation {
-    createUser(email: String!): User
+    createTodo(text: String!): Todo
+    toggleTodo(id: ID!): Todo
+    editTodo(id: ID!, text: String!): Todo
   }
 
   schema {

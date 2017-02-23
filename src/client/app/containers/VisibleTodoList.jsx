@@ -1,36 +1,35 @@
-import { connect } from 'react-redux';
-import { toggleTodo } from '../actions';
-import TodoList from '../components/TodoList';
+import { graphql } from 'react-apollo';
 
-const getVisibleTodos = (todos, filter) => {
-  switch (filter) {
-    case 'SHOW_ALL':
-      return todos;
-    case 'SHOW_COMPLETED':
-      return todos.filter(t => t.completed);
-    case 'SHOW_ACTIVE':
-      return todos.filter(t => !t.completed);
-    default:
-      return todos;
+import TodoList from './TodoList';
+
+import TODOS_QUERY from '../graphql/queries/Todos.graphql';
+import TOGGLE_TODO_MUTATION from '../graphql/mutations/toggleTodo.graphql';
+
+const withData = graphql(TODOS_QUERY, {
+  options: (params) => {
+    return {
+      variables: {
+        filter: params.filter
+      }
+    };
+  },
+  props: ({ ownProps, data: { loading, getTodos } }) => {
+    const props = {
+      loading,
+      todos: getTodos || [],
+      ...ownProps
+    };
+    return props;
   }
-};
+});
 
-const mapStateToProps = (state) => {
-  return {
-    todos: getVisibleTodos(state.todos, state.visibilityFilter)
-  };
-};
+const withMutations = graphql(TOGGLE_TODO_MUTATION, {
+  props: ({ ownProps, mutate }) => {
+    return {
+      onTodoClick: id => mutate({ variables: { id } }),
+      ...ownProps
+    };
+  }
+});
 
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onTodoClick: id => dispatch(toggleTodo(id))
-  };
-};
-
-const VisibleTodoList = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TodoList);
-
-export default VisibleTodoList;
+export default withMutations(withData(TodoList));

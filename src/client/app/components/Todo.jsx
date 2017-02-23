@@ -1,20 +1,31 @@
 import React, { PropTypes } from 'react';
 
-const Todo = ({ onClick, completed, text }) => (
+const Todo = ({ onTodoClick, onEditClick, completed, text }) => (
   <li>
-    <button
-      className={
-        completed ? 'btn btn-success' : 'btn btn-warning'
-      }
-      onClick={onClick}
-    >
-      {text}
-    </button>
+    <div className="btn-group">
+      <button
+        className={
+          completed ? 'btn btn-success' : 'btn btn-warning'
+        }
+        onClick={onTodoClick}
+      >
+        {text}
+      </button>
+      <button
+        className={
+          completed ? 'btn btn-success' : 'btn btn-warning'
+        }
+        onClick={onEditClick}
+      >
+        Edit
+      </button>
+    </div>
   </li>
 );
 
 Todo.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  onTodoClick: PropTypes.func.isRequired,
+  onEditClick: PropTypes.func.isRequired,
   completed: PropTypes.bool.isRequired,
   text: PropTypes.string.isRequired
 };

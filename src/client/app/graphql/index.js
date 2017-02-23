@@ -1,7 +1,7 @@
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
 
-//const config = { networkInterface: createNetworkInterface({ uri: 'http://localhost:8000/grahql' }) }
+const config = { networkInterface: createNetworkInterface({ uri: '/graphql' }) };
 
-const client = new ApolloClient();
+const client = new ApolloClient(config);
 
 export default client;

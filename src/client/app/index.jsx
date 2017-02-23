@@ -12,6 +12,8 @@ import App from './components/App';
 import Index from './pages/Index';
 import Todos from './pages/Todos';
 
+import './styles/main.css';
+
 const store = createStore(reducer, middleware);
 
 render(

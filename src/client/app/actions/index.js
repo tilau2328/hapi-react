@@ -1,4 +1,4 @@
-import { ADD_TODO, SET_VISIBILITY_FILTER, TOGGLE_TODO } from './types';
+import { ADD_TODO, SET_VISIBILITY_FILTER, TOGGLE_TODO, SHOW_EDIT_TODO } from './types';
 
 let nextTodoId = 0;
 export const addTodo = (text) => {
@@ -20,6 +20,13 @@ export const setVisibilityFilter = (filter) => {
 export const toggleTodo = (id) => {
   return {
     type: TOGGLE_TODO,
+    id
+  };
+};
+
+export const showEditTodo = (id) => {
+  return {
+    type: SHOW_EDIT_TODO,
     id
   };
 };

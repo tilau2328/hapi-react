@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO } from '../actions/types';
+import { ADD_TODO, TOGGLE_TODO, SHOW_EDIT_TODO } from '../actions/types';
 
 const todo = (state = {}, action) => {
   switch (action.type) {
@@ -11,6 +11,8 @@ const todo = (state = {}, action) => {
     case TOGGLE_TODO:
       if (state.id !== action.id) { return state; }
       return Object.assign({}, state, { completed: !state.completed });
+    case SHOW_EDIT_TODO:
+      return state;
     default:
       return state;
   }
@@ -22,6 +24,8 @@ const todos = (state = [], action) => {
       return [...state, todo(undefined, action)];
     case TOGGLE_TODO:
       return state.map(t => todo(t, action));
+    case SHOW_EDIT_TODO:
+      return state;
     default:
       return state;
   }

@@ -17,18 +17,22 @@ var config = {
         filename: 'bundle.js'
     },
     module : {
-        preLoaders: [
-            {
+        loaders : [{
+                test: /\.css/,
+                include: APP_DIR,
+                loader: 'style-loader!css-loader',
+            }, {
+              test: /\.json$/,
+              include: APP_DIR,
+              loader: 'json-loader',
+            }, {
                 test: /\.jsx$|\.js$/,
                 include: APP_DIR,
-                loader: "eslint-loader"
-            }
-        ],
-        loaders : [
-            {
-                test: /\.jsx$|\.js$/,
-                include: APP_DIR,
-                loader: 'babel-loader'
+                loaders: ['babel-loader', "eslint-loader"]
+            }, {
+              test: /\.(graphql|gql)$/,
+              include: APP_DIR,
+              loader: 'graphql-tag/loader',
             }
         ]
     },
