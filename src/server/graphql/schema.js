@@ -12,7 +12,7 @@ const schema = `
   type Mutation {
     createTodo(text: String!): Todo
     toggleTodo(id: ID!): Todo
-    editTodo(id: ID!, text: String!): Todo
+    removeTodo(id: ID!): Int
   }
 
   schema {

@@ -1,4 +1,2 @@
-export { VisibleTodoList } from './VisibleTodoList.jsx';
-export { AddTodo } from './AddTodo.jsx';
-export { FilterLink } from './FilterLink.jsx';
-export { TodoContainer } from './TodoContainer.jsx';
+export CommentContainer from './comments.jsx';
+export RequireAuth from './require_auth.jsx';

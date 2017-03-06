@@ -15,15 +15,8 @@ const resolvers = (models) => ({
     toggleTodo(root, { id }) {
       return todosController.toggleTodo(models.Todo, id);
     },
-    editTodo(root, { id, text }) {
-      models.Todo
-        .find({ id })
-        .then(
-          (todo) => {
-            todo.text = text;
-            todo.save().then((response) => response);
-          }
-        );
+    removeTodo(root, { id }) {
+      return todosController.removeTodo(models.Todo, id);
     }
   }
 });

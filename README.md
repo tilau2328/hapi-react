@@ -1,15 +1,13 @@
-# hapi-react
+# Hapi-React-Playground
 
-Simple hapi.js server with a react app as client
+Hapi.js server with jwt authentication and a graphql endpoint
+React Redux Client with graphql client
 
 ##Commands:
-git clone https://github.com/tilau2328/hapi-react
-cd hapi-react 
-npm i
+git clone https://github.com/tilau2328/hapi-react && cd hapi-react && npm i
 
 ###Start Server:
-node src/server
+npm run dev:server
 
 ###Start Webpack
-npm i -g webpack
-webpack --watch 
+npm run dev:client

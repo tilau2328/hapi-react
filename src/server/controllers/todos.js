@@ -25,7 +25,7 @@ const toggleTodo = function(model, id){
   return new Promise((resolve, reject) => {
     model.findById(id, (err, todo) => {
       if(err) reject(err);
-      if(!todo) throw "TODO not found";
+      if(!todo) reject('TODO not found');
       todo.completed = !todo.completed;
       todo.save((err, todo) => {
         err ? reject(err) : resolve(todo);
@@ -34,9 +34,20 @@ const toggleTodo = function(model, id){
   });
 };
 
-
+const removeTodo = function(model, id){
+  return new Promise((resolve, reject) => {
+    model.findById(id, (err, todo) => {
+      if(err) reject(err);
+      if(!todo) reject('TODO not found');
+      todo.remove((err) => {
+        err ? reject(err) : resolve();
+      });
+    });
+  });
+};
 
 module.exports = {
   getTodosByFilter: getTodosByFilter,
-  toggleTodo: toggleTodo
+  toggleTodo: toggleTodo,
+  removeTodo: removeTodo
 };

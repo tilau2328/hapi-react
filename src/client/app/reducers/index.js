@@ -1,12 +1,18 @@
 import { combineReducers } from 'redux';
-import todos from './todos';
-import visibilityFilter from './visibilityFilter';
-import apollo from './apollo';
+import { reducer as form } from 'redux-form';
 
-const todoApp = combineReducers({
-  todos,
+import auth from './auth';
+import users from './users';
+import todos from './todos';
+import comments from './comments';
+import visibilityFilter from './visibilityFilter';
+
+const rootReducer = combineReducers({
+  auth,
+  users,
+  comments,
   visibilityFilter,
-  apollo
+  form
 });
 
-export default todoApp;
+export default rootReducer;

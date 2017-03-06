@@ -16,6 +16,7 @@ module.exports = {
   register: apolloHapi,
   options: {
     path: '/graphql',
+    config: { auth: 'jwt' },
     apolloOptions: () => ({
       pretty: true,
       schema: executableSchema

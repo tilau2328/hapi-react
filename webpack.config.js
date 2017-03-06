@@ -28,22 +28,18 @@ var config = {
             }, {
                 test: /\.jsx$|\.js$/,
                 include: APP_DIR,
-                loaders: ['babel-loader', "eslint-loader"]
+                loaders: ['babel-loader']//, "eslint-loader"
             }, {
               test: /\.(graphql|gql)$/,
               include: APP_DIR,
-              loader: 'graphql-tag/loader',
-            }
+              loader: 'graphql-ag/loader',
+            }<
         ]
     },
-    plugins: [
-        /*
-        new BrowserSyncPlugin({
-            proxy: HOST,
-            open: false
-        })
-        */
-    ]
+    devServer: {
+      historyApiFallback: true,
+      contentBase: './public'
+    }
 };
 
 module.exports = config;

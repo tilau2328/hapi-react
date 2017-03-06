@@ -1,13 +1,42 @@
 const path = require('path');
-const publiPath = path.join(__dirname, "..", "public");
+const publicPath = path.join(__dirname, "..", "public");
 
-const staticHandler = { directory: { path: path.join(publiPath, "static"), redirectToSlash: true, index: true } };
-const indexHandler = { file: path.join(publiPath, "index.html") };
+const authRoutes = require('./auth');
+const commentRoutes = require('./comments');
 
-const staticRoute = { method: "GET", path: "/static/{param*}", handler: staticHandler };
-const indexRoute = { method: "GET", path: "/", handler: indexHandler };
-const todosRoute = { method: "GET", path: "/todos", handler: indexHandler };
+const staticHandler = {
+  directory: {
+    path: path.join(publicPath, "static"),
+    redirectToSlash: true,
+    index: true
+  }
+};
 
-var routes = [ staticRoute, indexRoute, todosRoute ];
+const indexHandler = { file: path.join(publicPath, "index.html") };
+
+const staticRoute = {
+  method: "GET",
+  path: "/static/{param*}",
+  handler: staticHandler,
+  config: { auth: false }
+};
+
+const indexRoute = {
+  method: "GET",
+  path: "/",
+  handler: indexHandler,
+  config: { auth: false }
+};
+
+const usersRoute = {
+  method: "GET",
+  path: "/users",
+  handler: { file: path.join(__dirname, '..', "users.json") },
+  config: { auth: 'jwt' }
+};
+
+var routes = [ staticRoute, indexRoute, usersRoute ];
+routes.push.apply(routes, commentRoutes);
+routes.push.apply(routes, authRoutes);
 
 module.exports = routes;

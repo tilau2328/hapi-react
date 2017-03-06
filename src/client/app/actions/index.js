@@ -1,32 +1,16 @@
-import { ADD_TODO, SET_VISIBILITY_FILTER, TOGGLE_TODO, SHOW_EDIT_TODO } from './types';
+import { FETCH_USERS } from './types';
+import axios from 'axios';
 
-let nextTodoId = 0;
-export const addTodo = (text) => {
-  nextTodoId += 1;
-  return {
-    type: ADD_TODO,
-    id: nextTodoId,
-    text
-  };
-};
+const ROOT_URL = 'http://localhost:8000';
 
-export const setVisibilityFilter = (filter) => {
+export function fetchUsers(){
+  const request = axios.get(`${ROOT_URL}/users`);
   return {
-    type: SET_VISIBILITY_FILTER,
-    filter
+    type: FETCH_USERS,
+    payload: request
   };
-};
+}
 
-export const toggleTodo = (id) => {
-  return {
-    type: TOGGLE_TODO,
-    id
-  };
-};
-
-export const showEditTodo = (id) => {
-  return {
-    type: SHOW_EDIT_TODO,
-    id
-  };
-};
+export * from './auth';
+export * from './todos';
+export * from './comments';
