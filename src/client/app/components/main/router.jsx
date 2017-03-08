@@ -7,6 +7,7 @@ import SignUp from '../../pages/sign_up';
 import SignIn from '../../pages/sign_in';
 import Users from '../../pages/users';
 import Todos from '../../pages/todos';
+import Books from '../../pages/books';
 import Comments from '../../pages/comments';
 
 import RequireAuth from '../../containers/require_auth';
@@ -20,6 +21,7 @@ const AppRouter = () => {
         <Route path="sign_in" component={SignIn} />
         <Route path="users" component={RequireAuth(Users)} />
         <Route path="todos" component={RequireAuth(Todos)} />
+        <Route path="books" component={RequireAuth(Books)} />
         <Route path="comments" component={RequireAuth(Comments)} />
       </Route>
     </Router>

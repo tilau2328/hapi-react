@@ -1,10 +1,10 @@
 var webpack = require('webpack');
-var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 var path = require('path');
 
 var SRC_DIR = path.resolve(__dirname, 'src');
 var APP_DIR = path.resolve(SRC_DIR, 'client', 'app');
-var BUILD_DIR = path.resolve(SRC_DIR, 'server', 'public', 'static', 'scripts');
+var PUBLIC_DIR = path.resolve(SRC_DIR, 'server', 'public');
+var BUILD_DIR = path.resolve(PUBLIC_DIR, 'static', 'scripts');
 var HOST = process.env.IP + ':' + process.env.PORT;
 
 var config = {
@@ -32,13 +32,13 @@ var config = {
             }, {
               test: /\.(graphql|gql)$/,
               include: APP_DIR,
-              loader: 'graphql-ag/loader',
-            }<
+              loader: 'graphql-tag/loader',
+            }
         ]
     },
     devServer: {
       historyApiFallback: true,
-      contentBase: './public'
+      contentBase: PUBLIC_DIR
     }
 };
 

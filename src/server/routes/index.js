@@ -2,6 +2,7 @@ const path = require('path');
 const publicPath = path.join(__dirname, "..", "public");
 
 const authRoutes = require('./auth');
+const bookRoutes = require('./books');
 const commentRoutes = require('./comments');
 
 const staticHandler = {
@@ -37,6 +38,7 @@ const usersRoute = {
 
 var routes = [ staticRoute, indexRoute, usersRoute ];
 routes.push.apply(routes, commentRoutes);
+routes.push.apply(routes, bookRoutes);
 routes.push.apply(routes, authRoutes);
 
 module.exports = routes;

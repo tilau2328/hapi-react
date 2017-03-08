@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import SignUpForm from '../components/auth/sign_up';
 
 let SignUp = () => (

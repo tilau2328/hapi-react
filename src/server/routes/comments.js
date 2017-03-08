@@ -1,4 +1,4 @@
-const controllers = require('../controllers/comments');
+const controllers = require('../handlers/comments');
 
 const getComments = { method: "GET", path: "/comments", handler: controllers.getComments, config: { auth: 'jwt' } };
 const createComment = { method: "POST", path: "/comments", handler: controllers.createComment, config: { auth: 'jwt' } };

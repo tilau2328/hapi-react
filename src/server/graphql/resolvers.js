@@ -1,4 +1,4 @@
-const todosController = require('../controllers/todos');
+const todosController = require('../handlers/todos');
 
 const resolvers = (models) => ({
   Query: {
@@ -9,7 +9,6 @@ const resolvers = (models) => ({
   Mutation: {
     createTodo(root, args) {
       const todo = new models.Todo(args);
-      console.log("CREATE TODO");
       return todo.save().then((response) => response);
     },
     toggleTodo(root, { id }) {

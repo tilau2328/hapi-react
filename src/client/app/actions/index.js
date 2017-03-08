@@ -13,4 +13,5 @@ export function fetchUsers(){
 
 export * from './auth';
 export * from './todos';
+export * from './books';
 export * from './comments';

@@ -46,6 +46,7 @@ class Header extends Component {
           <li className="nav-item"> <Link to="/" className="btn-link">Home</Link> </li>
           { this.requireAuth(<li className="nav-item"> <Link to="/todos" className="btn-link">Todos</Link> </li>) }
           { this.requireAuth(<li className="nav-item"> <Link to="/users" className="btn-link">Users</Link> </li>) }
+          { this.requireAuth(<li className="nav-item"> <Link to="/books" className="btn-link">Books</Link> </li>) }
           { this.requireAuth(<li className="nav-item"> <Link to="/comments" className="btn-link">Comments</Link> </li>) }
         </ul>
         <ul className="nav navbar-nav pull-right">
